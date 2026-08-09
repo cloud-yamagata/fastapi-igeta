@@ -1,0 +1,45 @@
+"""te_blend_lot_base 永続化アクセス（CRUD 雛形・自動生成）。"""
+from __future__ import annotations
+
+from sqlalchemy import select
+from sqlalchemy.orm import Session
+
+from app.entities.te_blend_lot_base.model import TeBlendLotBase
+
+
+class TeBlendLotBaseRepository:
+    @staticmethod
+    def list_all(session: Session) -> list[TeBlendLotBase]:
+        return list(session.scalars(select(TeBlendLotBase)).all())
+
+    @staticmethod
+    def get_by_pk(session: Session, product_no: object) -> TeBlendLotBase | None:
+        return session.get(TeBlendLotBase, product_no)
+
+    @staticmethod
+    def create(session: Session, row: TeBlendLotBase) -> TeBlendLotBase:
+        session.add(row)
+        session.commit()
+        session.refresh(row)
+        return row
+
+    @staticmethod
+    def update(session: Session, row: TeBlendLotBase) -> TeBlendLotBase:
+        session.add(row)
+        session.commit()
+        session.refresh(row)
+        return row
+
+    @staticmethod
+    def delete_by_pk(session: Session, product_no: object) -> bool:
+        row = session.get(TeBlendLotBase, product_no)
+        if row is None:
+            return False
+        session.delete(row)
+        session.commit()
+        return True
+
+    @staticmethod
+    def delete_entity(session: Session, row: TeBlendLotBase) -> None:
+        session.delete(row)
+        session.commit()

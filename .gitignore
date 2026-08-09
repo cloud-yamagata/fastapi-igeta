@@ -1,0 +1,18 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+logs/
+
+# Cursor / ローカル作業用（実行環境に不要）
+.cursor/
+_local/
+
+# Virtual environments
+.venv
+pyproject.toml
+requirements.txt
+uv.lock
