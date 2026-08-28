@@ -127,6 +127,18 @@ REPORTS: dict[str, ReportAsset] = {
             autosize_columns=False,
         ),
     ),
+    # Menu screenKey: MonthlySalesPlan
+    "MonthlySalesPlan": ReportAsset(
+        report_id="MonthlySalesPlan",
+        title="月次販売計画実績一覧表",
+        sql_filename="月次販売計画実績一覧表.sql",
+        excel_template_filename=None,
+        excel_export_options=ExcelExportOptions(
+            start_row=2,
+            write_header=False,
+            autosize_columns=False,
+        ),
+    ),
 }
 
 

@@ -46,6 +46,7 @@ from app.routers import te_material_purchase  # 仕上品仕入情報
 from app.routers import material_purchase  # 仕上品仕入登録（複合登録）
 from app.routers import te_material_result  # 原料実績情報
 from app.routers import te_monthly_plan  # 月別製造計画情報
+from app.routers import te_monthly_sales_plan  # 月別販売計画
 from app.routers import te_package_base  # パッケージ基本情報
 from app.routers import te_package_base_new  # パッケージ基本情報（新）
 from app.routers import te_package_categorys_new  # パッケージ個別情報（新）
@@ -64,6 +65,7 @@ from app.routers import tr_purchase  # 仕入先
 # from app.routers import tr_report  # レポート管理マスタ
 # from app.routers import tr_report_item  # レポート項目マスタ
 from app.routers import tr_resale  # 転売先
+from app.routers import tr_sales_plan_item  # 販売計画商品マスタ
 from app.routers import tr_store  # 倉庫
 from app.routers import tr_supplier  # 委託先
 from app.routers import users  # サンプルCRUD
@@ -174,6 +176,7 @@ app.include_router(te_material_purchase.router)  # 仕上品仕入情報
 app.include_router(material_purchase.router)  # 仕上品仕入登録（複合登録）
 app.include_router(te_material_result.router)  # 原料実績情報
 app.include_router(te_monthly_plan.router)  # 月別製造計画情報
+app.include_router(te_monthly_sales_plan.router)  # 月別販売計画
 app.include_router(te_package_base.router)  # パッケージ基本情報
 app.include_router(te_package_base_new.router)  # パッケージ基本情報（新）
 app.include_router(te_package_categorys_new.router)  # パッケージ個別情報（新）
@@ -192,6 +195,7 @@ app.include_router(tr_purchase.router)  # 仕入先
 # app.include_router(tr_report.router)  # レポート管理マスタ
 # app.include_router(tr_report_item.router)  # レポート項目マスタ
 app.include_router(tr_resale.router)  # 転売先
+app.include_router(tr_sales_plan_item.router)  # 販売計画商品マスタ
 app.include_router(tr_store.router)  # 倉庫
 app.include_router(tr_supplier.router)  # 委託先
 app.include_router(users.router)  # サンプルCRUD
