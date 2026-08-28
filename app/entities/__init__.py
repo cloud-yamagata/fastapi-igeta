@@ -28,6 +28,7 @@ from app.entities.te_material.model import TeMaterial
 from app.entities.te_material_purchase.model import TeMaterialPurchase
 from app.entities.te_material_result.model import TeMaterialResult
 from app.entities.te_monthly_plan.model import TeMonthlyPlan
+from app.entities.te_monthly_product_plan.model import TeMonthlyProductPlan
 from app.entities.te_monthly_sales_plan.model import TeMonthlySalesPlan
 from app.entities.te_package_base.model import TePackageBase
 from app.entities.te_package_base_new.model import TePackageBaseNew
@@ -47,6 +48,7 @@ from app.entities.tr_purchase.model import TrPurchase
 from app.entities.tr_report.model import TrReport
 from app.entities.tr_report_item.model import TrReportItem
 from app.entities.tr_resale.model import TrResale
+from app.entities.tr_sales_link_name.model import TrSalesLinkName
 from app.entities.tr_sales_plan_item.model import TrSalesPlanItem
 from app.entities.tr_store.model import TrStore
 from app.entities.tr_supplier.model import TrSupplier
@@ -79,6 +81,7 @@ __all__ = [
     "TeMaterialPurchase",
     "TeMaterialResult",
     "TeMonthlyPlan",
+    "TeMonthlyProductPlan",
     "TeMonthlySalesPlan",
     "TePackageBase",
     "TePackageBaseNew",
@@ -98,6 +101,7 @@ __all__ = [
     "TrReport",
     "TrReportItem",
     "TrResale",
+    "TrSalesLinkName",
     "TrSalesPlanItem",
     "TrStore",
     "TrSupplier",

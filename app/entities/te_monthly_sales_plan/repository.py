@@ -46,11 +46,16 @@ class TeMonthlySalesPlanRepository:
         session.commit()
 
     @staticmethod
-    def delete_by_year_month(session: Session, year: int, month: int) -> int:
+    def delete_by_year_month_no_commit(session: Session, year: int, month: int) -> int:
         rows = TeMonthlySalesPlanRepository.list_by_year_month(session, year, month)
-        if not rows:
-            return 0
         for row in rows:
             session.delete(row)
-        session.commit()
         return len(rows)
+
+    @staticmethod
+    def delete_by_year_month(session: Session, year: int, month: int) -> int:
+        deleted = TeMonthlySalesPlanRepository.delete_by_year_month_no_commit(session, year, month)
+        if deleted == 0:
+            return 0
+        session.commit()
+        return deleted

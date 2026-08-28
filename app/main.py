@@ -46,6 +46,7 @@ from app.routers import te_material_purchase  # 仕上品仕入情報
 from app.routers import material_purchase  # 仕上品仕入登録（複合登録）
 from app.routers import te_material_result  # 原料実績情報
 from app.routers import te_monthly_plan  # 月別製造計画情報
+from app.routers import te_monthly_product_plan  # 月別製造計画（Excel取込）
 from app.routers import te_monthly_sales_plan  # 月別販売計画
 from app.routers import te_package_base  # パッケージ基本情報
 from app.routers import te_package_base_new  # パッケージ基本情報（新）
@@ -176,6 +177,7 @@ app.include_router(te_material_purchase.router)  # 仕上品仕入情報
 app.include_router(material_purchase.router)  # 仕上品仕入登録（複合登録）
 app.include_router(te_material_result.router)  # 原料実績情報
 app.include_router(te_monthly_plan.router)  # 月別製造計画情報
+app.include_router(te_monthly_product_plan.router)  # 月別製造計画（Excel取込）
 app.include_router(te_monthly_sales_plan.router)  # 月別販売計画
 app.include_router(te_package_base.router)  # パッケージ基本情報
 app.include_router(te_package_base_new.router)  # パッケージ基本情報（新）
