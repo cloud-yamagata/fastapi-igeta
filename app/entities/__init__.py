@@ -5,6 +5,7 @@ from app.entities.blend_no.model import BlendNo
 from app.entities.bulk_no.model import BulkNo
 from app.entities.finish_no.model import FinishNo
 from app.entities.firepan_no.model import FirepanNo
+from app.entities.te_blend_lot.model import TeBlendLot
 from app.entities.te_blend_lot_base.model import TeBlendLotBase
 from app.entities.te_blend_lot_part.model import TeBlendLotPart
 from app.entities.te_consign_product.model import TeConsignProduct
@@ -58,6 +59,7 @@ __all__ = [
     "BulkNo",
     "FinishNo",
     "FirepanNo",
+    "TeBlendLot",
     "TeBlendLotBase",
     "TeBlendLotPart",
     "TeConsignProduct",

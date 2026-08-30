@@ -20,4 +20,6 @@ class ViFactory3Stoc(Base):
     item_no: Mapped[int] = mapped_column(Integer(), primary_key=True)
     product_no: Mapped[int] = mapped_column(Integer(), primary_key=True)
     item_name: Mapped[str | None] = mapped_column(Text(), nullable=True)
+    organic_class: Mapped[str | None] = mapped_column(Text(), nullable=True)
+    item_group_no: Mapped[int | None] = mapped_column(Integer(), nullable=True)
     stoc_quantity: Mapped[Decimal | None] = mapped_column(Numeric(), nullable=True)

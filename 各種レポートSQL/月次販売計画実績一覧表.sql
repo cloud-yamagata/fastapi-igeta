@@ -132,8 +132,8 @@ select
 ,closing_stock
 ,need_size
 ,case
-   when closing_stock >= need_size then 'pass'
-   else 'fail'
+   when closing_stock >= need_size then '達成'
+   else '遅延'
  end as complete
 ,remarks
 from v_adj

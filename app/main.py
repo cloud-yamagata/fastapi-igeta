@@ -20,6 +20,7 @@ from app.routers import finish_no  # 仕上番号
 from app.routers import factory2_lot_manufacture  # 第二工場ロット製造登録（変更・削除）
 from app.routers import package_lot_manufacture  # パッケージ製造報告書登録（登録・変更・削除）
 from app.routers import firepan_no  # 火入番号
+from app.routers import te_blend_lot  # ブレンドロット情報
 # from app.routers import te_blend_lot_base  # ブレンドロット基本情報
 # from app.routers import te_blend_lot_part  # ブレンドロット部品情報
 # from app.routers import te_consign_product  # 外部委託実績情報
@@ -149,6 +150,7 @@ app.include_router(blend_no.router)  # 仕上茶番号
 app.include_router(bulk_no.router)  # 荒茶番号
 app.include_router(finish_no.router)  # 仕上番号
 app.include_router(firepan_no.router)  # 火入番号
+app.include_router(te_blend_lot.router)  # ブレンドロット情報
 # app.include_router(te_blend_lot_base.router)  # ブレンドロット基本情報
 # app.include_router(te_blend_lot_part.router)  # ブレンドロット部品情報
 # app.include_router(te_consign_product.router)  # 外部委託実績情報
