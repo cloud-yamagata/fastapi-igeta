@@ -27,7 +27,8 @@ v_lot_list as
 select
 b.item_no
 ,b.product_no
-,c.product_name
+--,c.product_name
+,a.item_name as product_name
 ,b.transfer_date as product_date
 ,b.reason as process_name
 ,c.make_year
