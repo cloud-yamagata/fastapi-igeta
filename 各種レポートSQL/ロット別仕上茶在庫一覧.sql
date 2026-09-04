@@ -3,7 +3,8 @@ v_lot as
 (
 select
 a.lot_no
-,a.use_name as product_name
+--,a.use_name as product_name
+,c.item_name as product_name
 ,b.work_date as product_date
 ,b.product_no
 ,a.make_year
@@ -15,6 +16,8 @@ a.lot_no
 from te_lot_use_item a
 inner join te_lot_base b
   on a.lot_no = b.lot_no
+inner join tr_item c
+  on a.use_no = c.item_no
 order by b.product_no 
 )
 ,
