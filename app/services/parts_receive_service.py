@@ -133,8 +133,8 @@ select
 ,a.product_no
 ,cast(a.lot_no as text) as lot_no
 ,'3' as transfer_type
-,'3' as result_type
-,'通常品受入' as reason
+,:result_type as result_type
+,:reason as reason
 ,'2' as lot_type
 ,:store_no as store_no
 ,'井ケ田第二工場' as store_party_name
@@ -276,8 +276,17 @@ def receive_parts(session: Session, *, item_no: int, product_no: int, transfer_q
         raise HTTPException(status_code=400, detail="第三工場の在庫量に対し受入れ量の指定が正しくありません")
 
     transfer_dt = _parse_date(transfer_date)
-    result_type = "7" if store_no == 2 else "3"
-    reason = "仕上茶返品" if store_no == 2 else "仕上茶受入"
+    # te_store_transfer: 第2工場は返品（result_type=7 / reason=仕上茶返品）
+    #                    第3工場は通常品受入
+    if store_no == 2:
+        transfer_result_type = "7"
+        transfer_reason = "仕上茶返品"
+    else:
+        transfer_result_type = "3"
+        transfer_reason = "通常品受入"
+    # te_store_transfer_fa2: WPF どおり（第2工場=返品 / 第3工場=受入）
+    fa2_result_type = "7" if store_no == 2 else "3"
+    fa2_reason = "仕上茶返品" if store_no == 2 else "仕上茶受入"
 
     try:
         r1 = session.execute(
@@ -285,6 +294,8 @@ def receive_parts(session: Session, *, item_no: int, product_no: int, transfer_q
             {
                 "transfer_date": transfer_dt,
                 "store_no": store_no,
+                "result_type": transfer_result_type,
+                "reason": transfer_reason,
                 "transfer_quantity": qty,
                 "item_no": item_no,
                 "product_no": product_no,
@@ -297,8 +308,8 @@ def receive_parts(session: Session, *, item_no: int, product_no: int, transfer_q
             text(_INSERT_TRANSFER_FA2_SQL),
             {
                 "transfer_date": transfer_dt,
-                "result_type": result_type,
-                "reason": reason,
+                "result_type": fa2_result_type,
+                "reason": fa2_reason,
                 "transfer_quantity": qty,
                 "product_no": product_no,
             },
