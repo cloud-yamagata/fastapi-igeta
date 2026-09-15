@@ -4,7 +4,7 @@ v_lot as
 select
 a.lot_no
 --,a.use_name as product_name
-,c.item_name as product_name
+,c.item_name
 ,b.work_date as product_date
 ,b.product_no
 ,a.make_year
@@ -27,8 +27,8 @@ v_lot_list as
 select
 b.item_no
 ,b.product_no
---,c.product_name
-,a.item_name as product_name
+--,c.item_name
+,a.item_name
 ,b.transfer_date as product_date
 ,b.reason as process_name
 ,c.make_year
@@ -107,7 +107,7 @@ group by a.item_no, a.product_no
 
 select
  a.item_no
-,a.product_name
+,a.item_name
 ,a.product_date
 ,a.product_no
 ,a.make_year
