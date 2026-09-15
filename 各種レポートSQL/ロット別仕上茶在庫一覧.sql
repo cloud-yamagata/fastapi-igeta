@@ -3,8 +3,6 @@ v_lot as
 (
 select
 a.lot_no
---,a.use_name as product_name
-,c.item_name
 ,b.work_date as product_date
 ,b.product_no
 ,a.make_year
@@ -16,8 +14,6 @@ a.lot_no
 from te_lot_use_item a
 inner join te_lot_base b
   on a.lot_no = b.lot_no
-inner join tr_item c
-  on a.use_no = c.item_no
 order by b.product_no 
 )
 ,
@@ -25,27 +21,25 @@ order by b.product_no
 v_lot_list as
 (
 select
-b.item_no
-,b.product_no
---,c.item_name
-,a.item_name
-,b.transfer_date as product_date
-,b.reason as process_name
+a.item_no
+,a.product_no
+,b.item_name
+,a.transfer_date as product_date
+,a.reason as process_name
 ,c.make_year
 ,c.count
-,b.store_no
-,case when b.store_no = 2 then b.transfer_quantity else 0 end factory2_product_quantity
-,case when b.store_no = 3 then b.transfer_quantity else 0 end factory3_product_quantity
-from tr_item a
-inner join te_store_transfer b on a.item_no = b.item_no
-left join v_lot c on b.product_no = c.product_no
+,a.store_no
+,case when a.store_no = 2 then a.transfer_quantity else 0 end factory2_product_quantity
+,case when a.store_no = 3 then a.transfer_quantity else 0 end factory3_product_quantity
+from te_store_transfer a
+left join tr_item b on a.item_no = b.item_no
+left join v_lot c on a.product_no = c.product_no
 where (
- (b.transfer_type = '1' and b.result_type = '1' and b.lot_type = '2' and b.reason = '通常品生産')
+ (a.transfer_type = '1' and a.result_type = '1' and a.lot_type = '2' and a.reason = '通常品生産')
   or
- (b.transfer_type = '1' and b.result_type = '4' and b.lot_type = '2' and b.reason = '仕上品仕入')
+ (a.transfer_type = '1' and a.result_type = '4' and a.lot_type = '2' and a.reason = '仕上品仕入')
   or 
- (b.transfer_type = '1' and b.result_type = '4' and b.lot_type = '2' and b.reason = '外部委託納品')
-  --and to_char(b.transfer_date, 'YYYYMMDD') >= :transfer_date
+ (a.transfer_type = '1' and a.result_type = '4' and a.lot_type = '2' and a.reason = '外部委託納品')
 )
 )
 ,
@@ -87,7 +81,6 @@ from te_store_transfer a
 where a.transfer_type = '2'
   and a.result_type = '5'
   and a.store_no = 3
-  --and to_char(a.transfer_date, 'YYYYMMDD') >= :transfer_date
 group by a.item_no, a.product_no 
 )
 ,
